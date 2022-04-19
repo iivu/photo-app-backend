@@ -1,0 +1,10 @@
+/dist
+/node_modules
+
+# Logs
+logs
+*.logs
+npm-debug.log*
+
+# OS
+.DS_Store
