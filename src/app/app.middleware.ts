@@ -1,6 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 
 /**
+ * log request url
+ */
+export const requestUrl = (error: any, req: Request, res: Response, next: NextFunction) => {
+  console.log(req.url);
+  next();
+};
+
+/**
  * Default error handler
  */
 export const defualtErrorHandler = (
