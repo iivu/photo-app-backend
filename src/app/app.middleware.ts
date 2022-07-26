@@ -22,7 +22,7 @@ export const defualtErrorHandler = (
   switch (error.messgae) {
     default:
       statusCode = 500;
-      message = 'Server has some problems...';
+      message = error.message || 'Server has some problems...';
   }
   res.status(statusCode).send({ message });
 };

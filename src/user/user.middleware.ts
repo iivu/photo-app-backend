@@ -9,5 +9,8 @@ export const validateUserData = async (req: Request, res: Response, next: NextFu
   const { name, password } = req.body;
   if (!name) return next(new Error('Name is required!'));
   if (!password) return next(new Error('Password is required!'));
+  const user = await userService.getUserByName(name);
+  if(user) return next(new Error('User already exist!'))
+
   next();
 };

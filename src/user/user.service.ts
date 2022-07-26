@@ -13,3 +13,14 @@ export const createUser = async (user: UserModel) => {
   const [data] = await connection.promise().query(sql, user);
   return data;
 };
+
+export const getUserByName = async (name: string) => {
+  const sql = `
+    SELECT id,name 
+    FROM user
+    WHERE name = ?
+  `;
+  const [data] = await connection.promise().query(sql, name);
+  // @ts-ignore
+  return data[0];
+};
