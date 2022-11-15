@@ -19,10 +19,15 @@ export const defualtErrorHandler = (
 ) => {
   if (error.message) console.log(error.message);
   let statusCode: number, message: string;
-  switch (error.messgae) {
+  switch (error.message) {
+    case 'UNAUTHORIZED':
+      statusCode = 401;
+      message = '请先登录';
+      break;
     default:
       statusCode = 500;
       message = error.message || 'Server has some problems...';
+      break
   }
   res.status(statusCode).send({ message });
 };
