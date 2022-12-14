@@ -16,5 +16,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 };
 
 export const validate = async (req: Request, res: Response, next: NextFunction) => {
+  const { user } = req;
+  console.log(user);
   res.sendStatus(200);
 };

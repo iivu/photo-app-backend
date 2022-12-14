@@ -21,7 +21,8 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
 export const store = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { title, content } = req.body;
-    const data = await creatPost({ title, content });
+    const { user } = req;
+    const data = await creatPost({ title, content, userId: user!.id });
     res.status(200).send(data);
   } catch (e) {
     next(e);
@@ -45,7 +46,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
 /**
  * Delete post
  */
- export const destroy = async (req: Request, res: Response, next: NextFunction) => {
+export const destroy = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { postId } = req.params;
     const data = await deletePost(parseInt(postId, 10));
